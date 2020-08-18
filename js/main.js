@@ -27,59 +27,18 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// basket
-const basket = document.querySelector('.header__basket-img');
-const basketBack = document.querySelector('.basket__back');
-basket.addEventListener('click', function () {
-    bodyHidden.classList.add('active-basket');
-    document.querySelector('.basket').style.display = "block";
+//basket
+const basketBtn = document.querySelector('.header__basket-img');
+const basketBlock = document.querySelector('.basket');
+const body = document.querySelector('body');
+const arrowBack = document.querySelector('.header-basket__back img');
+basketBtn.addEventListener('click', function () {
+    basketBlock.style.display = "block";
+    body.classList.add('active');
 });
-basketBack.addEventListener('click', function () {
-    bodyHidden.classList.remove('active-basket');
-    document.querySelector('.basket').style.display = "none";
-});
-
-// plus minus
-let addNumber = document.querySelectorAll('.basket__circle-plus');
-let minusNumber = document.querySelectorAll('.basket__circle-minus');
-let addNumberP = document.querySelectorAll('.basket__item-number1 p');
-let costValueP = document.querySelectorAll('.basket__item-cost p');
-
-addNumber.forEach(function (elem, index) {
-    addNumber[index].addEventListener('click', function () {
-        let num = addNumberP[index].textContent;
-        let costX = costValueP[index].textContent;
-        costX = parseInt(costX) / num;
-        if (num >= 1) {
-            num1 = +num + 1;
-            addNumberP[index].textContent = num1;
-            costValueP[index].textContent = num1 * parseInt(costX) + " P";
-            document.querySelectorAll('.basket__circle-minus')[index].style.display = "flex";
-        } else if (num == 1) {
-            num1 = +num + 1;
-            addNumberP[index].textContent = num1;
-            document.querySelectorAll('.basket__circle-minus')[index].style.display = "none";
-        }
-
-    });
-});
-minusNumber.forEach(function (elem, index) {
-    minusNumber[index].addEventListener('click', function () {
-        let num = addNumberP[index].textContent;
-        let costX = costValueP[index].textContent;
-        costX = parseInt(costX) / num;
-        if (num == 2) {
-            num1 = +num - 1;
-            addNumberP[index].textContent = num1;
-            costValueP[index].textContent = num1 * parseInt(costX) + " P";
-            document.querySelectorAll('.basket__circle-minus')[index].style.display = "none";
-        } else if (num >= 3) {
-            num1 = +num - 1;
-            addNumberP[index].textContent = num1;
-            costValueP[index].textContent = num1 * parseInt(costX) + " P";
-
-        }
-    });
+arrowBack.addEventListener('click', function () {
+    basketBlock.style.display = "none";
+    body.classList.remove('active');
 });
 
 

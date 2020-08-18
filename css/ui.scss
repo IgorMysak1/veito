@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+//basket__header
+.header-basket {
+    height: 20%;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    &__back {
+        width: 45%;
+        display: flex;
+        align-items: center;
+    }
+    &__back p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+        margin-left: 30px;
+    }
+    &__title {
+        width: 55%;
+        display: flex;
+        align-items: center;
+    }
+    &__title p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 60px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+    }
+    @media (max-width: 768px) {
+        & {
+            padding: 30px 0;
+            align-self: flex-start;
+            flex-direction: column;
+        }
+        &__back p {
+            margin-left: 20px;
+        }
+        &__back {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        &__title {
+            margin-top: 30px;
+        }
+    }
+}
+//========================================================================================
+//basket__body
+
+.body-basket {
+    &__item {
+    }
+}
+.item-basket {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__info {
+        width: 90%;
+        background: #000000;
+    }
+
+    &__cross {
+        width: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @media (max-width: 768px) {
+        &__cross {
+            display: none;
+        }
+    }
+}
+.card {
+    display: flex;
+    padding: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    &__img {
+        width: 20%;
+    }
+
+    &__body {
+    }
+    &__options {
+        width: 35%;
+        display: flex;
+        align-items: center;
+    }
+    &__options p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    &__sum {
+    }
+    @media (max-width: 991px) {
+        &__options {
+            width: 30%;
+        }
+    }
+    @media (max-width: 768px) {
+        & {
+            flex-direction: column;
+        }
+        &__img {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        &__options {
+            margin-top: 15px;
+            width: 100%;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            height: 30px;
+            width: 30px;
+            z-index: 2000;
+            background: url(../img/icons/crossBasket.svg) center / cover no-repeat;
+        }
+    }
+}
+.body-card {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    &__title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    &__title p {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: #ffffff;
+        white-space: nowrap;
+        margin-bottom: 6px;
+    }
+
+    &__desc {
+        width: 50%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    &__desc p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+    @media (max-width: 991px) {
+        &__desc {
+            width: 80%;
+        }
+    }
+    @media (max-width: 768px) {
+        &__title {
+            margin: 10px 0;
+        }
+    }
+}
+.sum-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__count {
+    }
+
+    &__cost {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        color: #ffffff;
+        margin-left: 40px;
+    }
+    @media (max-width: 991px) {
+        &__cost {
+            margin-left: 25px;
+        }
+    }
+    @media (max-width: 768px) {
+        & {
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+    }
+}
+.coun-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    &__number {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+    }
+
+    &__plus-minus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 17px;
+    }
+
+    &__plus,
+    &__minus {
+        height: 20px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #c8a2c8;
+        border: 2px solid #c8a2c8;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    &__plus {
+        margin-bottom: 18px;
+    }
+}
+
+//========================================================================================
+.count-basket {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__order {
+        width: 238px;
+        height: 46px;
+        border: 1px solid #c8a2c8;
+        filter: drop-shadow(0px 1px 15px rgba(204, 255, 0, 0.63));
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__order p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    &__cost {
+    }
+    @media (max-width: 768px) {
+        & {
+            flex-direction: column-reverse;
+            justify-content: center;
+        }
+        &__order {
+            margin-top: 20px;
+        }
+    }
+}
+.basket-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__sum p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        color: #ffffff;
+    }
+
+    &__value p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #ffffff;
+        margin-left: 40px;
+    }
+}
