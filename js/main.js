@@ -32,14 +32,57 @@ const basketBtn = document.querySelector('.header__basket-img');
 const basketBlock = document.querySelector('.basket');
 const body = document.querySelector('body');
 const arrowBack = document.querySelector('.header-basket__back img');
-basketBtn.addEventListener('click', function () {
-    basketBlock.style.display = "block";
-    body.classList.add('active');
-});
-arrowBack.addEventListener('click', function () {
-    basketBlock.style.display = "none";
-    body.classList.remove('active');
+// basketBtn.addEventListener('click', function () {
+//     basketBlock.style.display = "block";
+//     body.classList.add('active');
+// });
+// arrowBack.addEventListener('click', function () {
+//     basketBlock.style.display = "none";
+//     body.classList.remove('active');
+// });
+// add minus
+const plus = document.querySelectorAll('.count-card__plus');
+const minus = document.querySelectorAll('.count-card__minus');
+plus.forEach(function (elem) {
+    elem.addEventListener('click', function count() {
+        if (document.querySelector('.one')) {
+            document.querySelector('.one').classList.remove('one');
+        }
+        elem.closest('.sum-card').classList.add('one');
+        let num = +document.querySelector('.one .num').textContent;
+        let val = parseInt(document.querySelector('.one .val').textContent) / num;
+        if (num == 1) {
+            document.querySelector('.one .count-card__minus').style.display = "flex";
+            document.querySelector('.one .count-card__plus').style.marginTop = 0;
+        }
+        num++;
+        document.querySelector('.one .num').textContent = num;
+        document.querySelector('.one .val').textContent = val * num + "₽";
+        console.log(num);
+        console.log(val);
+    });
 });
 
+minus.forEach(function (elem) {
+    elem.addEventListener('click', function count() {
+        if (document.querySelector('.one')) {
+            document.querySelector('.one').classList.remove('one');
+        }
+        elem.closest('.sum-card').classList.add('one');
+        let num = +document.querySelector('.one .num').textContent;
+        let val = parseInt(document.querySelector('.one .val').textContent) / num;
+        if (num <= 2) {
+            document.querySelector('.one .count-card__minus').style.display = "none";
+            document.querySelector('.one .count-card__plus').style.marginTop = "19px";
+        } else if (num == 1) {
+            return;
+        }
+        num--;
+        document.querySelector('.one .num').textContent = num;
+        document.querySelector('.one .val').textContent = val * num + "₽";
+        console.log(num);
+        console.log(val);
+    });
+});
 
 

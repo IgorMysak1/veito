@@ -16,7 +16,7 @@
     font-style: normal;
 }
 
-body.active {
+body {
     overflow: hidden;
 }
 
@@ -44,7 +44,7 @@ body.active {
 .basket {
     height: 100vh;
     width: 100%;
-    display: none;
+    display: block;
     position: fixed;
     background: #3e3e3e;
     left: 0;
