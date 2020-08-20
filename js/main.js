@@ -84,11 +84,11 @@ minus.forEach(function (elem) {
 });
 function countLastSum() {
     let allSum = document.querySelectorAll('.val');
-    let sss = 0;
+    let firstSum = 0;
     for (i = 0; i < allSum.length; i++) {
         sss += parseInt(allSum[i].innerText);
 
     };
-    let www = document.querySelector('.basket-price__value p');
-    www.textContent = sss + "₽";
+    let lastSum = document.querySelector('.basket-price__value p');
+    lastSum.textContent = firstSum + "₽";
 }
