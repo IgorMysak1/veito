@@ -288,25 +288,20 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-width: 120px;
 }
 
 .sum-card__cost {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
+  min-width: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #ffffff;
-  margin-left: 40px;
-  white-space: nowrap;
-}
-
-@media (max-width: 991px) {
-  .sum-card__cost {
-    margin-left: 25px;
-  }
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -387,6 +382,19 @@
 .count-card__minus {
   margin-top: 19px;
   display: none;
+}
+
+.val {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #ffffff;
+  margin-left: 40px;
+  white-space: nowrap;
 }
 
 .count-basket {

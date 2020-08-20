@@ -58,8 +58,7 @@ plus.forEach(function (elem) {
         num++;
         document.querySelector('.one .num').textContent = num;
         document.querySelector('.one .val').textContent = val * num + "₽";
-        console.log(num);
-        console.log(val);
+        countLastSum()
     });
 });
 
@@ -80,9 +79,16 @@ minus.forEach(function (elem) {
         num--;
         document.querySelector('.one .num').textContent = num;
         document.querySelector('.one .val').textContent = val * num + "₽";
-        console.log(num);
-        console.log(val);
+        countLastSum()
     });
 });
+function countLastSum() {
+    let allSum = document.querySelectorAll('.val');
+    let sss = 0;
+    for (i = 0; i < allSum.length; i++) {
+        sss += parseInt(allSum[i].innerText);
 
-
+    };
+    let www = document.querySelector('.basket-price__value p');
+    www.textContent = sss + "₽";
+}
