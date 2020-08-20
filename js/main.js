@@ -32,15 +32,15 @@ const basketBtn = document.querySelector('.header__basket-img');
 const basketBlock = document.querySelector('.basket');
 const body = document.querySelector('body');
 const arrowBack = document.querySelector('.header-basket__back img');
-// basketBtn.addEventListener('click', function () {
-//     basketBlock.style.display = "block";
-//     body.classList.add('active');
-// });
-// arrowBack.addEventListener('click', function () {
-//     basketBlock.style.display = "none";
-//     body.classList.remove('active');
-// });
-// add minus
+basketBtn.addEventListener('click', function () {
+    basketBlock.style.display = "block";
+    body.classList.add('active');
+});
+arrowBack.addEventListener('click', function () {
+    basketBlock.style.display = "none";
+    body.classList.remove('active');
+});
+// plus minus
 const plus = document.querySelectorAll('.count-card__plus');
 const minus = document.querySelectorAll('.count-card__minus');
 plus.forEach(function (elem) {
@@ -86,7 +86,7 @@ function countLastSum() {
     let allSum = document.querySelectorAll('.val');
     let firstSum = 0;
     for (i = 0; i < allSum.length; i++) {
-        sss += parseInt(allSum[i].innerText);
+        firstSum += parseInt(allSum[i].innerText);
 
     };
     let lastSum = document.querySelector('.basket-price__value p');
