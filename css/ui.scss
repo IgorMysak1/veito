@@ -11,26 +11,15 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 0;
-    &__back {
-        width: 45%;
-        display: flex;
-        align-items: center;
-    }
-    &__back p {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 21px;
-        display: flex;
-        align-items: center;
-        color: #ffffff;
-        margin-left: 30px;
-    }
+    padding: 70px 0;
+    position: relative;
+
     &__title {
-        width: 55%;
+        width: 100%;
         display: flex;
+        justify-content: center;
         align-items: center;
+        margin-right: 10%;
     }
     &__title p {
         font-style: normal;
@@ -45,7 +34,6 @@
         & {
             padding: 30px 0;
             align-self: flex-start;
-            flex-direction: column;
         }
         &__back p {
             margin-left: 20px;
@@ -56,10 +44,42 @@
             align-items: center;
         }
         &__title {
-            margin-top: 30px;
             justify-content: center;
+            margin-top: 30px;
+        }
+        &__title.active {
+            margin-top: 0;
         }
     }
+    @media (max-width: 544px) {
+        &__title {
+            padding-top: 30px;
+        }
+    }
+}
+.back-basket__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+        cursor: pointer;
+    }
+    & p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+        margin-left: 30px;
+        cursor: pointer;
+    }
+}
+.wrapper-basket {
+    position: absolute;
+    top: 30px;
+    left: 10px;
 }
 //========================================================================================
 //basket__body
@@ -74,6 +94,11 @@
     justify-content: center;
     align-items: center;
 
+    &__img {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
     &__info {
         width: 90%;
         background: #000000;
@@ -84,6 +109,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    &__cross img {
+        cursor: pointer;
     }
     @media (max-width: 768px) {
         &__cross {
@@ -99,7 +127,13 @@
     &__img {
         width: 20%;
     }
-
+    &__cross {
+        display: none;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
     &__body {
     }
     &__options {
@@ -138,15 +172,8 @@
             margin-top: 15px;
             width: 100%;
         }
-        &:after {
-            content: "";
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            height: 30px;
-            width: 30px;
-            z-index: 2000;
-            background: url(../img/icons/crossBasket.svg) center / cover no-repeat;
+        &__cross {
+            display: block;
         }
     }
 }
@@ -182,7 +209,7 @@
         line-height: 14px;
         color: rgba(255, 255, 255, 0.7);
     }
-    @media (max-width: 991px) {
+    @media (max-width: 1100px) {
         &__desc {
             width: 80%;
         }
@@ -246,10 +273,7 @@
         border: 2px solid #c8a2c8;
         border-radius: 50%;
         cursor: pointer;
-        margin-top: 19px;
-    }
-    &__plus {
-        margin-bottom: 18px;
+        z-index: 20;
     }
     &__minus {
         margin-top: 19px;
@@ -265,22 +289,27 @@
     color: #ffffff;
     margin-left: 40px;
     white-space: nowrap;
+    z-index: 10;
 }
 //========================================================================================
 .count-basket {
+    min-height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     &__order {
-        width: 238px;
-        height: 46px;
+        width: 230px;
+        min-height: 46px;
         border: 1px solid #c8a2c8;
         filter: drop-shadow(0px 1px 15px rgba(204, 255, 0, 0.63));
         border-radius: 3px;
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
     }
+
     &__order p {
         font-style: normal;
         font-weight: normal;
@@ -289,13 +318,14 @@
         text-align: center;
         color: #ffffff;
     }
-
+    &__back {
+        margin-top: 30px;
+    }
     &__cost {
     }
     @media (max-width: 768px) {
         & {
             flex-direction: column-reverse;
-            justify-content: center;
         }
         &__order {
             margin: 20px 0;
@@ -325,4 +355,66 @@
         color: #ffffff;
         margin-left: 40px;
     }
+}
+//========================================================================================
+//order
+.right-basket {
+    &__title p {
+        display: block;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        color: #ffffff;
+        margin-top: 46px;
+        position: relative;
+    }
+    &__title p:before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: #c8a2c8;
+        box-shadow: 1px 1px 15px rgba(204, 255, 0, 0.63);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    &__order {
+        margin-top: 40px;
+    }
+    &__info {
+        display: block;
+        width: 70%;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 30px 0;
+    }
+    @media (max-width: 1200px) {
+        &__info {
+            width: 90%;
+        }
+    }
+}
+.your-info p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #ffffff;
+    margin-top: 60px;
+}
+.your-info input {
+    background: #000000;
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+    margin-top: 30px;
+    font-size: 20px;
 }

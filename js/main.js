@@ -16,7 +16,6 @@ heroCross.addEventListener('click', function () {
 });
 //retreat header
 const header = document.querySelector('.header');
-
 window.addEventListener('scroll', function () {
     let retreat = window.scrollY;
 
@@ -31,7 +30,7 @@ window.addEventListener('scroll', function () {
 const basketBtn = document.querySelector('.header__basket-img');
 const basketBlock = document.querySelector('.basket');
 const body = document.querySelector('body');
-const arrowBack = document.querySelector('.header-basket__back img');
+let arrowBack = document.querySelector('.back-basket__wrapper');
 basketBtn.addEventListener('click', function () {
     basketBlock.style.display = "block";
     body.classList.add('active');
@@ -40,46 +39,46 @@ arrowBack.addEventListener('click', function () {
     basketBlock.style.display = "none";
     body.classList.remove('active');
 });
+
+
 // plus minus
 const plus = document.querySelectorAll('.count-card__plus');
 const minus = document.querySelectorAll('.count-card__minus');
 plus.forEach(function (elem) {
     elem.addEventListener('click', function count() {
-        if (document.querySelector('.one')) {
-            document.querySelector('.one').classList.remove('one');
+        if (document.querySelector('.one-sum')) {
+            document.querySelector('.one-sum').classList.remove('one-sum');
         }
-        elem.closest('.sum-card').classList.add('one');
-        let num = +document.querySelector('.one .num').textContent;
-        let val = parseInt(document.querySelector('.one .val').textContent) / num;
+        elem.closest('.sum-card').classList.add('one-sum');
+        let num = +document.querySelector('.one-sum .num').textContent;
+        let val = parseInt(document.querySelector('.one-sum .val').textContent) / num;
         if (num == 1) {
-            document.querySelector('.one .count-card__minus').style.display = "flex";
-            document.querySelector('.one .count-card__plus').style.marginTop = 0;
+            document.querySelector('.one-sum .count-card__minus').style.display = "flex";
         }
         num++;
-        document.querySelector('.one .num').textContent = num;
-        document.querySelector('.one .val').textContent = val * num + "₽";
-        countLastSum()
+        document.querySelector('.one-sum .num').textContent = num;
+        document.querySelector('.one-sum .val').textContent = val * num + "₽";
+        countLastSum();
     });
 });
 
 minus.forEach(function (elem) {
     elem.addEventListener('click', function count() {
-        if (document.querySelector('.one')) {
-            document.querySelector('.one').classList.remove('one');
+        if (document.querySelector('.one-sum')) {
+            document.querySelector('.one-sum').classList.remove('one');
         }
-        elem.closest('.sum-card').classList.add('one');
-        let num = +document.querySelector('.one .num').textContent;
-        let val = parseInt(document.querySelector('.one .val').textContent) / num;
+        elem.closest('.sum-card').classList.add('one-sum');
+        let num = +document.querySelector('.one-sum .num').textContent;
+        let val = parseInt(document.querySelector('.one-sum .val').textContent) / num;
         if (num <= 2) {
-            document.querySelector('.one .count-card__minus').style.display = "none";
-            document.querySelector('.one .count-card__plus').style.marginTop = "19px";
+            document.querySelector('.one-sum .count-card__minus').style.display = "none";
         } else if (num == 1) {
             return;
         }
         num--;
-        document.querySelector('.one .num').textContent = num;
-        document.querySelector('.one .val').textContent = val * num + "₽";
-        countLastSum()
+        document.querySelector('.one-sum .num').textContent = num;
+        document.querySelector('.one-sum .val').textContent = val * num + "₽";
+        countLastSum();
     });
 });
 function countLastSum() {
@@ -92,3 +91,43 @@ function countLastSum() {
     let lastSum = document.querySelector('.basket-price__value p');
     lastSum.textContent = firstSum + "₽";
 }
+//order
+let countBasket = document.querySelector('.count-basket');
+let countBasketOrder = document.querySelector('.count-basket__order');
+let basketRight = document.querySelector('.basket__right');
+let backBasketWrapper = document.querySelector('.back-basket__wrapper');
+let headerBasketTitle = document.querySelector('.header-basket__title');
+countBasketOrder.addEventListener('click', function () {
+    countBasketOrder.style.display = "none";
+    let div = document.createElement('div');
+    div.classList.add('back-basket__wrapper');
+    div.classList.add('count-basket__back');
+    let img = document.createElement('img');
+    let p = document.createElement('p');
+    img.setAttribute('src', 'img/icons/arrow .png');
+    p.textContent = "Назад";
+    div.appendChild(img);
+    div.appendChild(p);
+    div.style.display = "flex";
+    countBasket.insertBefore(div, countBasketOrder);
+    basketRight.style.display = "flex";
+    backBasketWrapper.style.display = "none";
+    headerBasketTitle.classList.add('active');
+    div.addEventListener('click', function () {
+        div.style.display = "none";
+        countBasketOrder.style.display = "flex";
+        basketRight.style.display = "none";
+        backBasketWrapper.style.display = "flex";
+        headerBasketTitle.classList.remove('active');
+    });
+});
+
+//delete
+let crossDelete = document.querySelectorAll('.item-basket__cross img');
+crossDelete.forEach(function (elem) {
+    elem.addEventListener('click', function () {
+        elem.closest('.item-basket').classList.add('one-delete');
+        document.querySelector('.body-basket').removeChild(document.querySelector('.one-delete'));
+        countLastSum();
+    });
+});

@@ -13,7 +13,7 @@
   font-style: normal;
 }
 
-body.active {
+body {
   overflow: hidden;
 }
 
@@ -45,7 +45,7 @@ body.active {
 .basket {
   height: 100vh;
   width: 100%;
-  display: none;
+  display: block;
   position: fixed;
   background: #3e3e3e;
   left: 0;
@@ -55,7 +55,7 @@ body.active {
 }
 
 .basket__wrapper {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -63,6 +63,17 @@ body.active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.basket__left {
+  height: 100%;
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -70,6 +81,24 @@ body.active {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.basket__right {
+  height: 100%;
+  width: 30%;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #000000;
+  margin-top: 160px;
+  padding: 0 50px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 .basket__header {
@@ -86,6 +115,31 @@ body.active {
   margin-right: 10%;
 }
 
+@media (max-width: 1200px) {
+  .basket__wrapper {
+    width: 100%;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 991px) {
+  .basket__wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .basket__right {
+    width: 40%;
+    margin: 10px auto;
+    padding: 0 30px;
+  }
+  .basket__left {
+    width: 90%;
+    margin: 10px auto;
+  }
+}
+
 @media (max-width: 768px) {
   .basket__wrapper {
     width: 100%;
@@ -94,6 +148,15 @@ body.active {
   .basket__count {
     margin-right: 0;
     width: 100%;
+  }
+  .basket__right {
+    width: 50%;
+  }
+}
+
+@media (max-width: 544px) {
+  .basket__right {
+    width: 70%;
   }
 }
 
