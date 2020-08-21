@@ -12,7 +12,7 @@ headerMenu.addEventListener('click', function () {
 heroCross.addEventListener('click', function () {
     heroMenu.classList.remove('active');
     heroWrapper.classList.remove('active');
-    bodyHidden.classList.remove('active');
+    bodyHidden.classList.remove('active');;
 });
 //retreat header
 const header = document.querySelector('.header');
@@ -123,7 +123,7 @@ countBasketOrder.addEventListener('click', function () {
 });
 
 //delete
-let crossDelete = document.querySelectorAll('.item-basket__cross img');
+let crossDelete = document.querySelectorAll('.basket__cross');
 crossDelete.forEach(function (elem) {
     elem.addEventListener('click', function () {
         elem.closest('.item-basket').classList.add('one-delete');
