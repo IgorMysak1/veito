@@ -17,15 +17,15 @@ body.active {
   overflow: hidden;
 }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   width: 15px;
 }
 
-::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   background-color: #3d3a3a;
 }
 
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   background-color: #a39f9f;
   border: 3px solid #3d3a3a;
   border-radius: 8px;
@@ -51,7 +51,7 @@ body.active {
   left: 0;
   top: 0;
   z-index: 1000;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .basket__wrapper {
@@ -96,6 +96,7 @@ body.active {
           flex-direction: column;
   background: #000000;
   margin-top: 160px;
+  margin-bottom: 20px;
   padding: 0 50px;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
@@ -158,6 +159,20 @@ body.active {
   .basket__right {
     width: 70%;
   }
+}
+
+.basket::-webkit-scrollbar {
+  width: 15px;
+}
+
+.basket::-webkit-scrollbar-track {
+  background-color: #3d3a3a;
+}
+
+.basket::-webkit-scrollbar-thumb {
+  background-color: #a39f9f;
+  border: 3px solid #3d3a3a;
+  border-radius: 8px;
 }
 
 .header {
@@ -964,6 +979,38 @@ body.active {
   }
 }
 
+.characteristics {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #010101;
+  z-index: 1000;
+  display: none;
+}
+
+.characteristics__wrapper {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 768px) {
+  .characteristics {
+    padding: 30px 0;
+  }
+}
+
 .lamps {
   height: 100%;
   width: 100%;
@@ -1211,6 +1258,7 @@ body.active {
   height: 160%;
   margin-top: 240px;
   margin-right: -70px;
+  z-index: 50;
 }
 
 @media (max-width: 1050px) {
@@ -1320,6 +1368,7 @@ body.active {
       -ms-flex-align: end;
           align-items: flex-end;
   padding: 20px;
+  z-index: 100;
 }
 
 .lamps__info-buy {
@@ -1389,5 +1438,216 @@ body.active {
           text-decoration-line: underline;
   color: #ffffff;
   cursor: pointer;
+}
+
+.lamps__more {
+  max-width: 262px;
+  height: 61px;
+  border: 1.5px solid rgba(255, 255, 255, 0.63);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-filter: drop-shadow(0px 1px 15px #c8a2c8);
+          filter: drop-shadow(0px 1px 15px #c8a2c8);
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 60px auto;
+}
+
+.lamps__more p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .lamps__more {
+    margin: 30px auto;
+  }
+}
+
+.info {
+  height: 100%;
+  width: 100%;
+  background: #141414;
+}
+
+.info__wrapper {
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.info__gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.info__title {
+  margin: 40px 0;
+}
+
+.info__sliders {
+  height: 100%;
+  width: 60%;
+  overflow-x: scroll;
+  margin-bottom: 50px;
+}
+
+.info__sliders::-webkit-scrollbar {
+  width: 15px;
+}
+
+.info__sliders::-webkit-scrollbar-track {
+  background-color: #3d3a3a;
+  margin-right: 17px;
+  border-radius: 8px;
+}
+
+.info__sliders::-webkit-scrollbar-thumb {
+  height: 100%;
+  background-color: #a39f9f;
+  border: 3px solid #3d3a3a;
+  border-radius: 8px;
+}
+
+@media (max-width: 1200px) {
+  .info__sliders {
+    width: 80%;
+  }
+}
+
+@media (max-width: 544px) {
+  .info__title {
+    margin: 30px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .info__slider {
+    width: 80px;
+  }
+  .info__sliders {
+    width: 90%;
+  }
+  .info__wrapper {
+    width: 100%;
+  }
+  .info__sliders {
+    margin: 0;
+  }
+}
+
+.info__delivery {
+  height: 100%;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.info__customers {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.callback {
+  height: 100%;
+  width: 100%;
+  background: #1d1d1d;
+}
+
+.callback__wrapper {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.news {
+  height: 100%;
+  width: 100%;
+  background: #141414;
+}
+
+.news__container {
+  height: 100%;
+  width: 100%;
+  padding: 60px 20px;
+}
+
+.news__about {
+  margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+  .news__container {
+    padding: 30px 20px;
+  }
+}
+
+.footer {
+  height: 100%;
+  width: 100%;
+  background: #1d1d1d;
+}
+
+.footer__wrapper {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 40px 40px 20px 40px;
 }
 /*# sourceMappingURL=stye.css.map */

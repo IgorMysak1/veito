@@ -41,46 +41,52 @@ arrowBack.addEventListener('click', function () {
 });
 
 
-// plus minus
-const plus = document.querySelectorAll('.count-card__plus');
-const minus = document.querySelectorAll('.count-card__minus');
-plus.forEach(function (elem) {
-    elem.addEventListener('click', function count() {
-        if (document.querySelector('.one-sum')) {
-            document.querySelector('.one-sum').classList.remove('one-sum');
-        }
-        elem.closest('.sum-card').classList.add('one-sum');
-        let num = +document.querySelector('.one-sum .num').textContent;
-        let val = parseInt(document.querySelector('.one-sum .val').textContent) / num;
-        if (num == 1) {
-            document.querySelector('.one-sum .count-card__minus').style.display = "flex";
-        }
-        num++;
-        document.querySelector('.one-sum .num').textContent = num;
-        document.querySelector('.one-sum .val').textContent = val * num + "₽";
-        countLastSum();
+// plus 
+function plusProducts() {
+    const plus = document.querySelectorAll('.count-card__plus');
+    plus.forEach(function (elem) {
+        elem.addEventListener('click', function count() {
+            if (document.querySelector('.one-sum')) {
+                document.querySelector('.one-sum').classList.remove('one-sum');
+            }
+            elem.closest('.sum-card').classList.add('one-sum');
+            let num = +document.querySelector('.one-sum .num').textContent;
+            let val = parseInt(document.querySelector('.one-sum .val').textContent) / num;
+            if (num == 1) {
+                document.querySelector('.one-sum .count-card__minus').style.display = "flex";
+            }
+            num++;
+            document.querySelector('.one-sum .num').textContent = num;
+            document.querySelector('.one-sum .val').textContent = val * num + "₽";
+            countLastSum();
+        });
     });
-});
+}
+plusProducts();
+function minusProduct() {
+    const minus = document.querySelectorAll('.count-card__minus');
+    minus.forEach(function (elem) {
+        elem.addEventListener('click', function count() {
+            if (document.querySelector('.one-sum')) {
+                document.querySelector('.one-sum').classList.remove('one');
+            }
+            elem.closest('.sum-card').classList.add('one-sum');
+            let num = +document.querySelector('.one-sum .num').textContent;
+            let val = parseInt(document.querySelector('.one-sum .val').textContent) / num;
+            if (num <= 2) {
+                document.querySelector('.one-sum .count-card__minus').style.display = "none";
+            } else if (num == 1) {
+                return;
+            }
+            num--;
+            document.querySelector('.one-sum .num').textContent = num;
+            document.querySelector('.one-sum .val').textContent = val * num + "₽";
+            countLastSum();
+        });
+    });
+};
+minusProduct();
 
-minus.forEach(function (elem) {
-    elem.addEventListener('click', function count() {
-        if (document.querySelector('.one-sum')) {
-            document.querySelector('.one-sum').classList.remove('one');
-        }
-        elem.closest('.sum-card').classList.add('one-sum');
-        let num = +document.querySelector('.one-sum .num').textContent;
-        let val = parseInt(document.querySelector('.one-sum .val').textContent) / num;
-        if (num <= 2) {
-            document.querySelector('.one-sum .count-card__minus').style.display = "none";
-        } else if (num == 1) {
-            return;
-        }
-        num--;
-        document.querySelector('.one-sum .num').textContent = num;
-        document.querySelector('.one-sum .val').textContent = val * num + "₽";
-        countLastSum();
-    });
-});
 function countLastSum() {
     let allSum = document.querySelectorAll('.val');
     let firstSum = 0;
@@ -122,12 +128,113 @@ countBasketOrder.addEventListener('click', function () {
     });
 });
 
-//delete
-let crossDelete = document.querySelectorAll('.basket__cross');
-crossDelete.forEach(function (elem) {
+//delete products
+function deleteProducts() {
+    let crossDelete = document.querySelectorAll('.basket__cross');
+    crossDelete.forEach(function (elem) {
+        elem.addEventListener('click', function () {
+            elem.closest('.item-basket').classList.add('one-delete');
+            document.querySelector('.body-basket').removeChild(document.querySelector('.one-delete'));
+            countLastSum();
+        });
+    });
+};
+deleteProducts();
+
+// characteristics products
+let allCharacteristics = document.querySelectorAll('.characteristics__text');
+let characteristics = document.querySelector('.characteristics');
+allCharacteristics.forEach(function (elem) {
     elem.addEventListener('click', function () {
-        elem.closest('.item-basket').classList.add('one-delete');
-        document.querySelector('.body-basket').removeChild(document.querySelector('.one-delete'));
-        countLastSum();
+        elem.closest('.lamps-block').classList.add('one-characteristics');
+        bodyHidden.classList.add('active');
+        characteristics.style.display = "flex";
+        let title = document.querySelector('.one-characteristics .lamps__tittle p').textContent;
+        let picture = document.querySelector('.one-characteristics .lamps-img').getAttribute('src');
+        let sum = document.querySelector('.one-characteristics .lamps__cost p').textContent;
+        changeCharacteristics(title, picture);
     });
 });
+let characteristicsBack = document.querySelector('.body-characteristics__back');
+characteristicsBack.addEventListener('click', closeCharacteristics);
+
+function closeCharacteristics() {
+    characteristics.style.display = "none";
+    bodyHidden.classList.remove('active');
+}
+
+function changeCharacteristics(title, picture) {
+    document.querySelector('.text-characteristics__title p').textContent = title;
+    document.querySelector('.body-characteristics__img img').src = picture;
+};
+// add in basket
+let buy = document.querySelectorAll('.buy-basket');
+buy.forEach(function (elem) {
+    elem.addEventListener('click', function () {
+        if (document.querySelector('.one-characteristics')) {
+            checkClass();
+        } else {
+            elem.closest('.lamps-block').classList.add('one-characteristics');
+            checkClass();
+        }
+
+    });
+});
+function checkClass() {
+    closeCharacteristics();
+    basketBlock.style.display = "block";
+    body.classList.add('active');
+    let title = document.querySelector('.one-characteristics .lamps__tittle p').textContent;
+    let picture = document.querySelector('.one-characteristics .lamps-img').getAttribute('src');
+    let sum = document.querySelector('.one-characteristics .lamps__cost p').textContent;
+    let allprod = document.querySelectorAll('.body-basket__item');
+    console.log(allprod[0]);
+    allprod.forEach(function (prod) {
+        document.querySelector('.basket__body').insertBefore(prod, allprod[allprod.length]);
+    })
+    document.querySelector('.basket__body').innerHTML += `<div class="body-basket__item item-basket">
+    <div class="item-basket__info card">
+        <div class="card__cross">
+            <img class="basket__cross" src="img/icons/crossBasket.svg" alt="">
+        </div>
+        <div class="card__img">
+            <img src="${picture}" alt="">
+        </div>
+        <div class="card__body body-card">
+            <div class="body-card__title">
+                <p>${title}</p>
+            </div>
+            <div class="body-card__desc">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet convallis
+                    erat
+                    auctor nibh pharetra ac.</p>
+            </div>
+        </div>
+        <div class="card__options">
+            <p>Модель или цвет</p>
+        </div>
+        <div class="card__sum sum-card">
+            <div class="sum-card__count count-card">
+                <div class="count-card__number">
+                    <p class="num">1</p>
+                </div>
+                <div class="count-card__plus-minus">
+                    <div class="count-card__plus">+</div>
+                    <div class="count-card__minus">-</div>
+                </div>
+            </div>
+            <div class="sum-card__cost">
+                <p class="val">${sum}</p>
+            </div>
+        </div>
+    </div>
+    <div class="item-basket__cross">
+        <img class="basket__cross" src="img/icons/crossBasket.svg" alt="">
+    </div>
+</div>`;
+    document.querySelector('.one-characteristics').classList.remove('one-characteristics');
+    countLastSum();
+    plusProducts();
+    minusProduct();
+    deleteProducts();
+}
